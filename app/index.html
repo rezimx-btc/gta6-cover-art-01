@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Cover Studio — GTA-style cover maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">LC</span>
+    <div>
+      <h1>LEONIDA COVER STUDIO</h1>
+      <p>Turn your photo into GTA-style poster cover art</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="sampleBtn" type="button">Load sample photo</button>
+    <button id="exportBtn" type="button" class="primary">Export PNG</button>
+  </div>
+</header>
+
+<main class="studio">
+  <section class="preview-pane">
+    <div class="preview-head">
+      <span id="previewLabel">Live preview — 1080 × 1080</span>
+      <span id="previewNote">What you see is what exports</span>
+    </div>
+    <div class="canvas-wrap">
+      <canvas id="preview" width="1080" height="1080"></canvas>
+    </div>
+    <p class="hint">Tip: load a photo into each panel, drag the sliders to crop and position it, then pick a grade and a size. Export writes a PNG to your machine — nothing is uploaded.</p>
+  </section>
+
+  <aside class="controls">
+    <section class="panel-block">
+      <h2>1 · Photos</h2>
+      <p class="block-note">One photo fills every panel, or load a different photo per panel.</p>
+      <label class="file-label">Photo for all panels
+        <input id="photoAll" type="file" accept="image/*">
+      </label>
+      <div id="panelPhotos"></div>
+    </section>
+
+    <section class="panel-block">
+      <h2>2 · Crop &amp; position</h2>
+      <label>Panel
+        <select id="panelSelect"></select>
+      </label>
+      <label>Zoom <span id="zoomVal">100%</span>
+        <input id="zoomRange" type="range" min="100" max="300" value="100">
+      </label>
+      <label>Horizontal <span id="offsetXVal">0</span>
+        <input id="offsetXRange" type="range" min="-100" max="100" value="0">
+      </label>
+      <label>Vertical <span id="offsetYVal">0</span>
+        <input id="offsetYRange" type="range" min="-100" max="100" value="0">
+      </label>
+    </section>
+
+    <section class="panel-block">
+      <h2>3 · Layout</h2>
+      <div class="choice-row" id="layoutRow">
+        <button type="button" data-layout="hero" class="choice active">Hero + 2</button>
+        <button type="button" data-layout="triple" class="choice">Triple</button>
+        <button type="button" data-layout="grid" class="choice">Grid 2×2</button>
+        <button type="button" data-layout="full" class="choice">Full bleed</button>
+      </div>
+    </section>
+
+    <section class="panel-block">
+      <h2>4 · Colour grade</h2>
+      <div class="choice-row" id="gradeRow">
+        <button type="button" data-grade="sunset" class="choice active">Sunset</button>
+        <button type="button" data-grade="neon" class="choice">Neon night</button>
+        <button type="button" data-grade="dusk" class="choice">Palm dusk</button>
+        <button type="button" data-grade="ink" class="choice">Ink</button>
+      </div>
+    </section>
+
+    <section class="panel-block">
+      <h2>5 · Caption</h2>
+      <label>Top caption
+        <input id="captionTop" type="text" value="LEONIDA" maxlength="24">
+      </label>
+      <label>Bottom caption
+        <input id="captionBottom" type="text" value="VICE NIGHTS" maxlength="32">
+      </label>
+      <label>Tag line
+        <input id="captionTag" type="text" value="SUNSET STATE · EST. 2026" maxlength="40">
+      </label>
+    </section>
+
+    <section class="panel-block">
+      <h2>6 · Export size</h2>
+      <div class="choice-row" id="sizeRow">
+        <button type="button" data-size="1080x1080" class="choice active">1080 × 1080</button>
+        <button type="button" data-size="1080x1350" class="choice">1080 × 1350</button>
+        <button type="button" data-size="1920x1080" class="choice">1920 × 1080</button>
+      </div>
+      <p class="block-note">Export is instant: one click, one PNG, on your machine.</p>
+    </section>
+  </aside>
+</main>
+
+<footer class="foot">
+  <p>Leonida Cover Studio — an original cover maker. No Rockstar Games logos, artwork or fonts are used. Photos stay on your machine.</p>
+</footer>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
